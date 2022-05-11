@@ -20,7 +20,7 @@ const itemcount = document.querySelector("#itemscount");
   }
 })();
 
-function toggleItemBasket(id) {
+function toggleItemBasket(id, img, title) {
   const icon = document.querySelector(`#${id} > i`);
   const span =
     document.querySelector("#itemscount > span") ??
