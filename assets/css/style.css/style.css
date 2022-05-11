@@ -56,7 +56,8 @@ header #second #custom-container {
 
 header #third {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  border-bottom: 1px solid #e3e3e3; }
   header #third #custom-container {
     width: 95%;
     display: flex;
@@ -117,6 +118,77 @@ header #third {
       @media (max-width: 1007px) {
         header #third #custom-container .search ul #heart {
           display: none; } }
+
+header #fourth {
+  display: flex;
+  justify-content: center;
+  height: 0;
+  overflow: hidden; }
+  header #fourth .custom-container {
+    width: 75%;
+    display: flex;
+    padding: 20px 0 0 0; }
+    header #fourth .custom-container .trending {
+      display: flex; }
+      header #fourth .custom-container .trending ul li {
+        list-style: none; }
+        header #fourth .custom-container .trending ul li a {
+          text-decoration: none;
+          color: #666;
+          font-size: 14px; }
+    header #fourth .custom-container .products {
+      display: flex;
+      padding: 0 0 0 110px; }
+      header #fourth .custom-container .products div {
+        padding: 0 0 0 30px; }
+        header #fourth .custom-container .products div ul li {
+          list-style: none; }
+          header #fourth .custom-container .products div ul li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 14px; }
+
+header #fifth {
+  display: flex;
+  justify-content: center;
+  height: 0; }
+  header #fifth .custom-container {
+    width: 90%; }
+    header #fifth .custom-container .icons {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      border-bottom: 1px solid #e3e3e3;
+      padding: 15px 0 0 0; }
+      header #fifth .custom-container .icons .cus-btn button {
+        border: none;
+        background-color: transparent; }
+        header #fifth .custom-container .icons .cus-btn button i {
+          font-size: 24px;
+          position: absolute;
+          right: 10px;
+          top: 25px; }
+    header #fifth .custom-container .nav-links {
+      padding: 15px 0 0 0;
+      border-bottom: 1px solid #e3e3e3; }
+      header #fifth .custom-container .nav-links ul li {
+        list-style: none; }
+        header #fifth .custom-container .nav-links ul li a {
+          text-decoration: none;
+          color: #000;
+          display: flex;
+          justify-content: space-between;
+          text-transform: uppercase;
+          font-size: 18px; }
+    header #fifth .custom-container .services {
+      padding: 15px 0 0 0; }
+      header #fifth .custom-container .services ul li {
+        list-style: none;
+        margin-top: 10px; }
+        header #fifth .custom-container .services ul li a {
+          text-decoration: none;
+          color: #000;
+          font-size: 18px; }
 
 main #first {
   position: relative; }
@@ -294,96 +366,74 @@ main #second {
           top: 110px;
           left: 40%; }
 
-main #third {
-  padding: 80px 0 0 0; }
-  main #third #custom-container .hr {
-    border: 1px solid #000;
-    width: 100%;
-    border-bottom: none; }
-  main #third #custom-container .title {
-    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; }
-    main #third #custom-container .title .sec1 ul {
-      display: flex; }
-      main #third #custom-container .title .sec1 ul li {
-        margin-left: 20px;
-        list-style: none; }
-        main #third #custom-container .title .sec1 ul li a {
-          text-decoration: none;
-          color: #000;
-          text-transform: uppercase; }
-    main #third #custom-container .title .sec2 a {
-      text-decoration: underline;
-      color: #000;
-      text-transform: uppercase;
-      font-weight: bold; }
-    main #third #custom-container .title .sec2 :hover {
-      background-color: #000;
-      color: #fff;
-      text-decoration: none; }
-    @media (max-width: 1007px) {
-      main #third #custom-container .title .sec2 {
-        display: none; } }
-  main #third #custom-container #custom-row {
-    padding: 20px 0 0 0; }
-    main #third #custom-container #custom-row div #custom-card {
-      cursor: pointer;
-      border: none; }
-      main #third #custom-container #custom-row div #custom-card .image {
-        position: relative; }
-        main #third #custom-container #custom-row div #custom-card .image .hearth {
-          position: absolute;
-          top: 5%;
-          right: 5%; }
-          main #third #custom-container #custom-row div #custom-card .image .hearth a {
-            text-decoration: none;
-            color: #000; }
-        main #third #custom-container #custom-row div #custom-card .image img {
-          width: 100%; }
-        main #third #custom-container #custom-row div #custom-card .image .price {
-          position: absolute;
-          bottom: -15px;
-          left: 2%; }
-          main #third #custom-container #custom-row div #custom-card .image .price p {
-            background-color: #fff;
-            padding: 0 5px;
-            font-size: 14px; }
-      main #third #custom-container #custom-row div #custom-card .desccription {
-        padding: 0 0 0 10px; }
-        main #third #custom-container #custom-row div #custom-card .desccription .title p {
-          font-size: 14px;
-          line-height: 20px;
-          margin-bottom: 0; }
-        main #third #custom-container #custom-row div #custom-card .desccription .desc p {
-          font-size: 12px;
-          color: #666;
-          margin-bottom: 0; }
-        main #third #custom-container #custom-row div #custom-card .desccription .code p {
-          font-size: 14px;
-          margin-bottom: 0; }
-    main #third #custom-container #custom-row :hover #custom-card {
-      border: 1px solid black; }
-  main #third #custom-container .next {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 80px 0 0 0; }
-    main #third #custom-container .next .bir {
-      width: 20px;
-      height: 5px;
-      background-color: #000; }
-    main #third #custom-container .next .iki {
-      margin-left: 3px;
-      width: 20px;
-      height: 2px;
-      background-color: #000; }
-    main #third #custom-container .next .uc {
-      margin-left: 3px;
-      width: 20px;
-      height: 2px;
-      background-color: #000; }
+main #third .hr {
+  border: 1px solid #000;
+  width: 100%;
+  border-bottom: none; }
+
+main #third .title {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  main #third .title .sec1 ul {
+    display: flex; }
+    main #third .title .sec1 ul li {
+      margin-left: 20px;
+      list-style: none; }
+      main #third .title .sec1 ul li a {
+        text-decoration: none;
+        color: #000;
+        text-transform: uppercase; }
+  main #third .title .sec2 a {
+    text-decoration: underline;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold; }
+  main #third .title .sec2 :hover {
+    background-color: #000;
+    color: #fff;
+    text-decoration: none; }
+  @media (max-width: 1007px) {
+    main #third .title .sec2 {
+      display: none; } }
+
+main #third #custom-card {
+  padding: 20px 0 0 0;
+  cursor: pointer;
+  border: none; }
+  main #third #custom-card .image {
+    position: relative; }
+    main #third #custom-card .image .hearth {
+      position: absolute;
+      top: 5%;
+      right: 5%; }
+      main #third #custom-card .image .hearth a {
+        text-decoration: none;
+        color: #000; }
+    main #third #custom-card .image img {
+      width: 100%; }
+    main #third #custom-card .image .price {
+      position: absolute;
+      bottom: -15px;
+      left: 2%; }
+      main #third #custom-card .image .price p {
+        background-color: #fff;
+        padding: 0 5px;
+        font-size: 14px; }
+  main #third #custom-card .desccription {
+    padding: 0 0 0 10px; }
+    main #third #custom-card .desccription .title p {
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 0; }
+    main #third #custom-card .desccription .desc p {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 0; }
+    main #third #custom-card .desccription .code p {
+      font-size: 14px;
+      margin-bottom: 0; }
 
 main #fourth {
   padding: 80px 0 20px 0; }
