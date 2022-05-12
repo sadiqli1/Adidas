@@ -1,67 +1,120 @@
-const itemcount = document.querySelector("#itemscount");
+const container = document.querySelector(".basket-container");
+const totalPriceContainer = document.querySelector(".price-container > span");
 
-(() => {
-  const items = localStorage.getItem("items")
+const itemParser = () =>
+  localStorage.getItem("items")
     ? JSON.parse(localStorage.getItem("items"))
     : [];
 
-  if (items.length > 0) {
-    const countspan = document.createElement("span");
-    countspan.innerHTML = items.length;
+const decreaseItemCount = (id) => {
+  let items = itemParser();
 
-    itemcount.appendChild(countspan);
+  items = items
+    .map((item) => {
+      if (item.item.id === id) {
+        if (item.count > 1) {
+          return {
+            ...item,
+            count: item.count - 1,
+          };
+        }
+      } else {
+        return item;
+      }
+    })
+    .filter(Boolean);
 
-    items.forEach((item) => {
-      const icon = document.querySelector(`#${item.id} > i`);
-
-      icon.classList.add("fa-solid");
-      icon.classList.remove("fa-regular");
-    });
-  }
-})();
-
-function toggleItemBasket(id, img, title) {
-  const icon = document.querySelector(`#${id} > i`);
-  const span =
-    document.querySelector("#itemscount > span") ??
-    document.createElement("span");
-
-  console.log(span);
-
-  let items = localStorage.getItem("items")
-    ? JSON.parse(localStorage.getItem("items"))
-    : [];
-
-  if (items.length > 0) {
-    if (items.some((item) => item.id === id)) {
-      items = items.filter((item) => item.id !== id);
-
-      icon.classList.remove("fa-solid");
-      icon.classList.add("fa-regular");
-    } else {
-      items.push({
-        id,
-        count: 1,
-      });
-
-      icon.classList.add("fa-solid");
-      icon.classList.remove("fa-regular");
-    }
-  } else {
-    items.push({
-      id,
-      count: 1,
-    });
-
-    icon.classList.add("fa-solid");
-    icon.classList.remove("fa-regular");
-    itemcount.appendChild(span);
-  }
-
-  if (items.length === 0) {
-    itemcount.removeChild(span);
-  } else {
-    span.innerHTML = items.length;
-  }
   localStorage.setItem("items", JSON.stringify(items));
-}
+
+  renderContent();
+};
+
+const increaseItemCount = (id) => {
+  let items = itemParser();
+
+  items = items.map((item) => {
+    if (item.item.id === id) {
+      if (item.count < 10) {
+        return {
+          ...item,
+          count: item.count + 1,
+        };
+      }
+    }
+
+    return item;
+  });
+
+  localStorage.setItem("items", JSON.stringify(items));
+
+  renderContent();
+};
+
+const renderCounter = (parentElement, id, count) => {
+  const counterContainer = document.createElement("div");
+  const minus = document.createElement("button");
+  const plus = document.createElement("button");
+  const countSpan = document.createElement("span");
+
+  counterContainer.classList.add("counter");
+
+  minus.innerHTML = "-";
+  plus.innerHTML = "+";
+
+  minus.addEventListener("click", () => {
+    decreaseItemCount(id);
+  });
+
+  plus.addEventListener("click", () => {
+    increaseItemCount(id);
+  });
+
+  countSpan.innerHTML = count;
+
+  counterContainer.appendChild(minus);
+  counterContainer.appendChild(countSpan);
+  counterContainer.appendChild(plus);
+
+  parentElement.appendChild(counterContainer);
+};
+
+const renderContent = () => {
+  const items = itemParser();
+
+  if (items.length > 0) {
+    let totalPrice = 0;
+    container.innerHTML = "";
+
+    items.forEach(({ count, item: { img, title, id, price } }) => {
+      const divItem = document.createElement("div");
+      const imgElement = document.createElement("img");
+      const text = document.createElement("span");
+      const priceText = document.createElement("span");
+
+      imgElement.src = img;
+      text.innerHTML = title;
+      priceText.innerHTML = `${price} AZN`;
+
+      totalPrice += price * count;
+
+      divItem.classList.add("item");
+
+      divItem.appendChild(imgElement);
+      divItem.appendChild(text);
+      divItem.appendChild(priceText);
+
+      container.appendChild(divItem);
+
+      renderCounter(divItem, id, count);
+    });
+
+    totalPriceContainer.innerHTML = `${totalPrice} AZN`;
+  } else {
+    container.innerHTML = "Your basket is empty";
+    totalPriceContainer.innerHTML = ``;
+  }
+};
+
+renderContent();
+
+window.addEventListener("storage", renderContent);
